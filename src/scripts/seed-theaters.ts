@@ -130,9 +130,6 @@ mongoose
         const area = city.areas[i % city.areas.length];
         theatres.push({
           name: `${brand} ${area}`,
-          location: `${area}, ${city.name}`,
-          city: city.name,
-          state: city.state, // ✅ Added here
           logo: logos[brand],
         });
       }

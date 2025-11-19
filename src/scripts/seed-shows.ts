@@ -47,7 +47,7 @@ export const seedShow = async () => {
 
   for (const movie of movies) {
     for (const theatre of theatres) {
-      for (let d = 0; d < 2; d++) { // ✅ today and tomorrow
+      for (let d = 0; d < 7; d++) { // ✅ today and tomorrow
         const showDate = today.add(d, "day");
         const formattedDate = showDate.format("DD-MM-YYYY");
         const numShows = Math.floor(Math.random() * 3) + 2; // 2–4 shows
@@ -60,7 +60,6 @@ export const seedShow = async () => {
           const newShow = new ShowModel({
             movie: movie._id,
             theater: theatre._id,
-            location: theatre.state,
             format: formats[Math.floor(Math.random() * formats.length)],
             audioType: "Dolby 7.1",
             startTime: slot.start, 

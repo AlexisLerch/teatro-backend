@@ -4,7 +4,6 @@ export interface IShow {
     _id?: string
     movie: Types.ObjectId;
     theater: Types.ObjectId;
-    location: string;
     format: "2D" | "3D" | "IMAX" | "PVR PXL";
     audioType?: string;
     startTime: string;

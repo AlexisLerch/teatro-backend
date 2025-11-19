@@ -7,10 +7,6 @@ const theaterSchema = new mongoose.Schema<ITheater>({
         type: String,
         required: true
     },
-    location: {
-        type: String,
-        required: true
-    },
     logo: {
         type: String,
         required: true

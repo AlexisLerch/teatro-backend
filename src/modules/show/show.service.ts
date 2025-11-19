@@ -10,22 +10,13 @@ export const createShow = async (showData: IShow) => {
     return await ShowModel.create(showToCreate);
 };
 
-export const getShowByMovieDateLocation = async (movieId: string, date: string, location: string) => {
-    const query: any = {
-        movie: new Types.ObjectId(movieId),
-        location: { $regex: new RegExp(location, "i") },
-    };
+export const getShowByMovieDateLocation = async (movieId: string, date: string) => {
+    return ShowModel.find({ movie: movieId, date });
+};
 
-    if (date) {
-        query.date = date;
-    }
 
-    const shows = await ShowModel.find(query).populate("movie theater").sort({ startTime: 1 });
 
-    const groupedShows = groupShowsByTheatreAndMovie(shows);
 
-    return groupedShows;
-}
 
 export const getShowById = async (id: string) => {
     return await ShowModel.findById(id).populate("movie theater");

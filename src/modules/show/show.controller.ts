@@ -11,18 +11,22 @@ export const createShow = async (req: Request, res: Response, next: NextFunction
 };
 
 export const getShowByMovieDateLocation = async (req: Request, res: Response, next: NextFunction) => {
-    try {
-        const { movieId, state, date } = req.params;
-        const shows = await ShowService.getShowByMovieDateLocation(
-            movieId as string,
-            date as string,
-            state as string
-        );
-        res.status(200).json({ shows });
-    } catch (error) {
-        next(error);
-    }
+  try {
+    const { movieId, date } = req.query;
+
+    const shows = await ShowService.getShowByMovieDateLocation(
+      movieId as string,
+      date as string
+    );
+
+    res.status(200).json({ shows });
+  } catch (error) {
+    next(error);
+  }
 };
+
+
+
 
 export const getShowById = async (req: Request, res: Response, next: NextFunction) => {
     try {
