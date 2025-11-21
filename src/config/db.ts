@@ -4,7 +4,7 @@ import { config } from "./config";
 const connectDB = async () => {
   try {
     await mongoose.connect(config.databaseUrl as string, {
-      dbName: "bookmyscreen", // 👈 ESTA LÍNEA ES LA CLAVE
+      dbName: "bookmyscreen",
     });
 
     console.log("Database connected successfully to bookmyscreen");
