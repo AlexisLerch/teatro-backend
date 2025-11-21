@@ -34,7 +34,7 @@ const toDateWithTime = (baseDate: Date, timeStr: string) => {
 };
 
 export const seedShow = async () => {
-  const movieIds = ["691727d8fa8433935def2394", "691727d8fa8433935def2393"];
+  const movieIds = ["691e376348498d0675111467", "691e376348498d067511146c"];
   const movies = await MovieModel.find({ _id: { $in: movieIds } });
   const theatres = await TheaterModel.find({ state: "West Bengal" });
 
@@ -47,7 +47,7 @@ export const seedShow = async () => {
 
   for (const movie of movies) {
     for (const theatre of theatres) {
-      for (let d = 0; d < 7; d++) { // ✅ today and tomorrow
+      for (let d = 0; d < 2; d++) { // ✅ today and tomorrow
         const showDate = today.add(d, "day");
         const formattedDate = showDate.format("DD-MM-YYYY");
         const numShows = Math.floor(Math.random() * 3) + 2; // 2–4 shows
@@ -60,6 +60,7 @@ export const seedShow = async () => {
           const newShow = new ShowModel({
             movie: movie._id,
             theater: theatre._id,
+            location: theatre.state,
             format: formats[Math.floor(Math.random() * formats.length)],
             audioType: "Dolby 7.1",
             startTime: slot.start, 
